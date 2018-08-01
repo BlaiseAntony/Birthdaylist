@@ -35,9 +35,9 @@ body{
     prdt.setDate(dt.getDate()-1);
     var dp=prdt.getDate();
     var mp=prdt.getMonth()+1;
-    document.getElementById("date").innerHTML = d+" "+monthNames[m];
-    document.getElementById("date0").innerHTML = dp+" "+monthNames[mp];
-    document.getElementById("date1").innerHTML = dn+" "+monthNames[mn];
+    document.getElementById("date").innerHTML += d+" "+monthNames[m];
+    document.getElementById("date0").innerHTML += dp+" "+monthNames[mp];
+    document.getElementById("date1").innerHTML += dn+" "+monthNames[mn];
     var detail=document.getElementById("details");
     var detail0=document.getElementById("details0");
     var detail1=document.getElementById("details1");
