@@ -13,12 +13,9 @@ body{
     font-size:20px;
   }</style>
 <body>
-  <b><p align = center id="date0"></p></b>
-  <p align = center id="details0"></p>
-  <b><p align = center id="date"></p></b>
-  <p align = center id="details"></p>
-  <b><p align = center id="date1"></p></b>
-  <p align = center id="details1"></p>
+  <p align = center id="date0"></p>
+  <p align = center id="date"></p>
+  <p align = center id="date1"></p>
   <script>
   function init() {
     var i=0;
@@ -35,12 +32,12 @@ body{
     prdt.setDate(dt.getDate()-1);
     var dp=prdt.getDate();
     var mp=prdt.getMonth()+1;
-    document.getElementById("date").innerHTML += d+" "+monthNames[m];
-    document.getElementById("date0").innerHTML += dp+" "+monthNames[mp];
-    document.getElementById("date1").innerHTML += dn+" "+monthNames[mn];
-    var detail=document.getElementById("details");
-    var detail0=document.getElementById("details0");
-    var detail1=document.getElementById("details1");
+    var detail=document.getElementById("date");
+    var detail0=document.getElementById("date0");
+    var detail1=document.getElementById("date1");
+    detail.innerHTML += d.toString().bold() +" "+monthNames[m].bold() + "<br />";
+    detail0.innerHTML += dp.toString().bold()+" "+monthNames[mp].bold() + "<br />";
+    detail1.innerHTML += dn.toString().bold()+" "+monthNames[mn].bold() + "<br />";
     var xhr=new XMLHttpRequest();
     xhr.open('GET',requestURL);
     xhr.reponseType='json';
