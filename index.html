@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+  <link rel="shortcut icon" href="icon.ico"><title>
+  Birthday List
+</title></head>
+<style>
+body{
+  position: relative;
+    background-image: url("back.jpg");
+    background-repeat:no-repeat;
+    background-size:100% 100vh;
+  }</style>
+<body>
+  <h3><p align = center id="date0"></p></h3>
+  <p align = center id="details0"></p>
+  <h3><p align = center id="date"></p></h3>
+  <p align = center id="details"></p>
+  <h3><p align = center id="date1"></p></h3>
+  <p align = center id="details1"></p>
+  <script>
+  function init() {
+    var i=0,j=1;
+    const monthNames = [" ","January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"];
+    var dt=new Date();
+    var d=dt.getDate();
+    var m=dt.getMonth()+1;
+    var nxdt=new Date(dt);
+    nxdt.setDate(dt.getDate()+1);
+    var dn=nxdt.getDate();
+    var mn=nxdt.getMonth()+1;
+    var prdt=new Date(dt);
+    prdt.setDate(dt.getDate()-1);
+    var dp=prdt.getDate();
+    var mp=prdt.getMonth()+1;
+    document.getElementById("date").innerHTML = d+" "+monthNames[m];
+    document.getElementById("date0").innerHTML = dp+" "+monthNames[mp];
+    document.getElementById("date1").innerHTML = dn+" "+monthNames[mn];
+    var detail=document.getElementById("details");
+    var detail0=document.getElementById("details0");
+    var detail1=document.getElementById("details1");
+    var xhr=new XMLHttpRequest();
+    xhr.open('GET',requestURL);
+    xhr.reponseType='json';
+    xhr.send();
+    xhr.onload=function(){
+      var data = JSON.parse(xhr.response);
+      var entr=data.feed['entry'];
+      for(i=0;i<entr.length;i++){
+        var str=entr[i].content.$t;
+        var res = str.split(":");
+        var dd=parseInt(res[3]);
+        var mm=parseInt(res[4]);
+        if(mm==m&dd==d){
+          var is = res[1].split(",",2);
+          var ins = res[2].split(",",2);
+          detail.innerHTML += (j++).toString() + "." + is[0] + "," + ins[0] + " House," + entr[i].title.$t + "<br />";
+        }
+        if(mm==mp&dd==dp){
+          var is = res[1].split(",",2);
+          var ins = res[2].split(",",2);
+          detail0.innerHTML += (j++).toString() + "." + is[0] + "," + ins[0] + " House," + entr[i].title.$t + "<br />";
+        }
+        if(mm==mn&dd==dn){
+          var is = res[1].split(",",2);
+          var ins = res[2].split(",",2);
+          detail1.innerHTML += (j++).toString() + "." + is[0] + "," + ins[0] + " House," + entr[i].title.$t + "<br />";
+        }
+      }
+    }
+  }
+  window.addEventListener("DOMContentLoaded", init)
+  var requestURL = "https://spreadsheets.google.com/feeds/list/1C8vSGbpSOYLFXt7SIpg932Y13nTRiPfFeu5DfVLGgFo/1/public/basic?alt=json";
+  </script>
+</body>
+</html>
