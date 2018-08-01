@@ -20,7 +20,7 @@ body{
   <p align = center id="details1"></p>
   <script>
   function init() {
-    var i=0,j=1;
+    var i=0;
     const monthNames = [" ","January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"];
     var dt=new Date();
@@ -55,17 +55,17 @@ body{
         if(mm==m&dd==d){
           var is = res[1].split(",",2);
           var ins = res[2].split(",",2);
-          detail.innerHTML += (j++).toString() + "." + is[0] + "," + ins[0] + " House," + entr[i].title.$t + "<br />";
+          detail.innerHTML += is[0] + "," + ins[0] + " House," + entr[i].title.$t + "<br />";
         }
         if(mm==mp&dd==dp){
           var is = res[1].split(",",2);
           var ins = res[2].split(",",2);
-          detail0.innerHTML += (j++).toString() + "." + is[0] + "," + ins[0] + " House," + entr[i].title.$t + "<br />";
+          detail0.innerHTML += is[0] + "," + ins[0] + " House," + entr[i].title.$t + "<br />";
         }
         if(mm==mn&dd==dn){
           var is = res[1].split(",",2);
           var ins = res[2].split(",",2);
-          detail1.innerHTML += (j++).toString() + "." + is[0] + "," + ins[0] + " House," + entr[i].title.$t + "<br />";
+          detail1.innerHTML += is[0] + "," + ins[0] + " House," + entr[i].title.$t + "<br />";
         }
       }
     }
