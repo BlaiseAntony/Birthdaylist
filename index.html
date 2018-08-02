@@ -11,8 +11,30 @@ body{
     background-repeat:no-repeat;
     background-size:100% 100vh;
     font-size:20px;
-  }</style>
+  }
+  .button {
+    background-color: red;
+    color: white;
+    padding: 5px;
+    width: 10%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border:2px solid red;
+    border-radius: 8px;
+  }
+  .button:hover {
+    background-color: white;
+    color: red;
+  }
+}
+  }
+</style>
 <body>
+  <p align = right><button onclick="window.open('https://docs.google.com/spreadsheets/d/1C8vSGbpSOYLFXt7SIpg932Y13nTRiPfFeu5DfVLGgFo/edit#gid=0')" class="button">Edit</button></p>
   <p align = center id="date0"></p>
   <p align = center id="date"></p>
   <p align = center id="date1"></p>
